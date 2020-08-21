@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          EQ-79
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -26,6 +26,37 @@
       content-class="bg-grey-1"
     >
       <q-list>
+        <q-item-label
+          header
+          class="text-grey-8
+        ">
+          EQ-79
+        </q-item-label>
+        <q-item
+          to="/"
+        >
+          <q-item-section
+            avatar
+          >
+            <q-icon name="home" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>HOME</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item
+          to="/categories"
+        >
+          <q-item-section
+            avatar
+          >
+            <q-icon name="category" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>CATEGORIES</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-separator spaced />
         <q-item-label
           header
           class="text-grey-8"
