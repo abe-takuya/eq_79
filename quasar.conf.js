@@ -115,7 +115,35 @@ module.exports = function (/* ctx */) {
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
-      workboxOptions: {}, // only for GenerateSW
+      workboxOptions: {
+        runtimeCaching: [{
+          // https://api.chucknorris.io/jokes
+          urlPattern: /^https:\/\/api\.chucknorris\.io\/jokes\/categories.*$/,
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'category-cache',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 7,
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        }, {
+          urlPattern: /^https:\/\/api\.chucknorris\.io\/jokes\/random.*$/,
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'joke-cache',
+            expiration: {
+              maxAgeSeconds: 60 * 60 * 24 * 7,
+              maxEntries: 20,
+            },
+            cacheableResponse: {
+              statuses: [0, 200],
+            },
+          },
+        }],
+      }, // only for GenerateSW
       manifest: {
         name: 'eGAO Quest 79',
         short_name: 'EQ_79',
